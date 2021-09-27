@@ -1,9 +1,13 @@
 import {Route, Switch, Redirect} from 'react-router-dom';
 
-import AllQuotes from './components/pages/AllQuotes';
-import QuoteDetail from './components/pages/QuoteDetail';
-import NewQuote from './components/pages/NewQuote';
+import AllQuotes from './pages/AllQuotes';
+import QuoteDetail from './pages/QuoteDetail';
+import NewQuote from './pages/NewQuote';
+import NotFound from './pages/NotFound';
 import Layout from './components/layout/Layout';
+
+//  The Route with path="*" is like RegEx that catches anything! So it must be the 
+//  last route checked, or else it will always render!
 
 function App() {
   return (
@@ -20,6 +24,9 @@ function App() {
         </Route>
         <Route path='/new-quote'>
           <NewQuote />
+        </Route>
+        <Route path='*'>
+          <NotFound />
         </Route>
       </Switch>
     </Layout>
