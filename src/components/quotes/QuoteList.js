@@ -30,7 +30,12 @@ const QuoteList = (props) => {
 
   const changeSortingHandler = () => {
     //  Push allows u to click a back button and go to the prev url, replace doesn't, can't go back.
-    history.push('/quotes?sort=' + (isSortingAscending ? 'desc' : 'asc'));
+    history.push({
+      pathname: location.pathname,
+      search: `?sort=${(isSortingAscending ? 'desc' : 'asc')}`
+    });
+    //  The above code is a more readable version of this. Both work, just cleaner code.
+    //history.push(`${location.pathname}?sort=${(isSortingAscending ? 'desc' : 'asc')}`);
   };
 
   return (
